@@ -27,3 +27,13 @@ python -c "import torch; print(torch.cuda.is_available())"
 *Do not use the requirements.txt files from the official repository!*
 
 
+## Train on Semantic3D
+1. Download the Semantic3D dataset. Go to the root dir of Open3d_ML, 
+	cd ./scripts/download_datasets/
+	chmod +x download_semantic3d.sh
+	conda install -c conda-forge p7zip -y
+	./download_semantic3d.sh /home/fzhcis/data/semantic3d_full/
+
+
+2. Preprocess the Semantic3D dataset
+	python scripts/preprocess_semantic3d.py --dataset_path /home/fzhcis/data/semantic3d_full/Semantic3D --out_path /home/fzhcis/data/semantic3d_full/processed/Semantic3D
