@@ -2,7 +2,7 @@ import os
 import open3d.ml as _ml3d
 import open3d.ml.torch as ml3d
 
-cfg_file = "configs/kpconv_semantic3d.yml"
+cfg_file = "configs/randlanet_semantic3d.yml"
 cfg = _ml3d.utils.Config.load_from_file(cfg_file)
 
 model = ml3d.models.RandLANet(**cfg.model)
