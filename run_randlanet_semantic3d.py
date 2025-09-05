@@ -6,8 +6,9 @@ cfg_file = "configs/randlanet_semantic3d.yml"
 cfg = _ml3d.utils.Config.load_from_file(cfg_file)
 
 model = ml3d.models.RandLANet(**cfg.model)
-cfg.dataset['dataset_path'] = "/home/fzhcis/data/semantic3d_full/preprocessed/Semantic3D"
-# dataset = ml3d.datasets.SemanticKITTI(cfg.dataset.pop('dataset_path', None), **cfg.dataset)
+# cfg.dataset['dataset_path'] = "/home/fzhcis/data/semantic3d_full/preprocessed/Semantic3D"
+cfg.dataset['dataset_path'] = "/home/fzhcis/data/semantic3d_full/Semantic3D"
+
 dataset = ml3d.datasets.Semantic3D(cfg.dataset.pop('dataset_path', None), **cfg.dataset)
 pipeline = ml3d.pipelines.SemanticSegmentation(model, dataset=dataset, device="gpu", **cfg.pipeline)
 
