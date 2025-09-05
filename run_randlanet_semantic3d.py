@@ -6,15 +6,16 @@ cfg_file = "configs/kpconv_semantic3d.yml"
 cfg = _ml3d.utils.Config.load_from_file(cfg_file)
 
 model = ml3d.models.RandLANet(**cfg.model)
-cfg.dataset['dataset_path'] = "/path/to/your/dataset"
-dataset = ml3d.datasets.SemanticKITTI(cfg.dataset.pop('dataset_path', None), **cfg.dataset)
+cfg.dataset['dataset_path'] = "/home/fzhcis/data/semantic3d_full/preprocessed/Semantic3D"
+# dataset = ml3d.datasets.SemanticKITTI(cfg.dataset.pop('dataset_path', None), **cfg.dataset)
+dataset = ml3d.datasets.Semantic3D(cfg.dataset.pop('dataset_path', None), **cfg.dataset)
 pipeline = ml3d.pipelines.SemanticSegmentation(model, dataset=dataset, device="gpu", **cfg.pipeline)
 
 # download the weights.
 ckpt_folder = "./logs/"
 os.makedirs(ckpt_folder, exist_ok=True)
-ckpt_path = ckpt_folder + "randlanet_semantickitti_202201071330utc.pth"
-randlanet_url = "https://storage.googleapis.com/open3d-releases/model-zoo/randlanet_semantickitti_202201071330utc.pth"
+ckpt_path = ckpt_folder + "randlanet_semantic3d_202201071330utc.pth"
+randlanet_url = "https://storage.googleapis.com/open3d-releases/model-zoo/randlanet_semantic3d_202201071330utc.pth"
 if not os.path.exists(ckpt_path):
     cmd = "wget {} -O {}".format(randlanet_url, ckpt_path)
     os.system(cmd)
