@@ -9,7 +9,7 @@ Open3D-ML is included in Open3D's Python package (version 0.11+). To set up your
 
 ```bash
 # 1. Create and activate environment
-conda create -n pcd_seg_open3d_env python=3.12
+conda create -n pcd_seg_open3d_env python=3.11
 conda activate pcd_seg_open3d_env
 
 # 2. Upgrade pip and install dependencies
